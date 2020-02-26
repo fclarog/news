@@ -61,10 +61,11 @@
       </div>
     <div class="col-sm-4 text-center">
         <h3> Next week's forecast </h3>
+        <% for day in @daily_forecast %>
         <div class="container mt-5">
-        <%=@weekly_summary%>
+            A maximum temperature of <%= day["apparentTemperatureHigh"] %> degrees and <%= day["summary"] %>
         </div>
-        <% end %>  
+      <% end %>
 
       
     </div>
