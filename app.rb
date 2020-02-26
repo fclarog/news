@@ -31,6 +31,7 @@ get "/news" do
     @current_conditions = @forecast["currently"]["summary"]
     @daily_forecast = @forecast["daily"]["data"]
     @weekly_summary = @forecast["daily"]["summary"]
+    @week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
    
     view"news"
 end

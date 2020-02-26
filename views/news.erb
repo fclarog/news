@@ -19,16 +19,24 @@
     <link rel="stylesheet" href="/styles.css">
 
 
-<title>News</title>
+<title>News + Weather forecast </title>
   </head>
+
+  
   <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Your report</a>
+  </div>
+</nav>
     <div class="container mt-5">
       <h1>Most important news of the day</h1>
+    </div>
     <p>
       <% for news in @headlines  %>
         <div class="container mt-5">
         <div class="row">
-        <div class="col-4">
+        <div class="col-5">
         <h5><%= news["title"] %></h5>
         </div>
         <div class="col-6">
@@ -38,12 +46,16 @@
         <a href= "<%= news["url"] %>"  class="btn btn-primary">Source link</a>
         </div>
         <% end %>
+        </div>
+        </div>
     </p>
 
-<hr class="my-4">
 
-  <div class="row mt-1">
-        <div class="col-sm-4 text-center">
+<hr class="my-4" >
+
+<div class="container mt-5">
+<div class="row">
+      <div class="col-sm-4 text-center">
           <h3>Where is <%=@location %> located?</h3>
       <iframe
         width="350"
@@ -61,18 +73,27 @@
       </div>
     <div class="col-sm-4 text-center">
         <h3> Next week's forecast </h3>
-        <% for day in @daily_forecast %>
         <div class="container mt-5">
-            A maximum temperature of <%= day["apparentTemperatureHigh"] %> degrees and <%= day["summary"] %>
-        </div>
-      <% end %>
+            <%= @weekly_summary %>
+        </div>     
+   </div>
+   </div>
+   </div>
+<div class="container mt-5">
+     <p>
+        <a href="/" class="btn btn-primary">Want to check another location?</a>
+    </p>
+</div>
 
-      
-    </div>
+<footer class="page-footer font-small blue">
+
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="https://fclarog.github.io/"> fclarog.github.io</a>
+  </div>
+ </footer>
 
 
-    # Max temperature on  will be <%= day["apparentTemperatureHigh"] %> degrees and the conditions will be <%= day["summary"] %>
-    
+
 
     
 
