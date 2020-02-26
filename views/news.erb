@@ -18,46 +18,73 @@
     <!-- Your own CSS -->
     <link rel="stylesheet" href="/styles.css">
 
-    <title>All you need</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<title>News</title>
   </head>
-  
   <body>
+    <div class="container mt-5">
+      <h1>Most important news of the day</h1>
+    <p>
+      <% for news in @headlines  %>
+        <div class="container mt-5">
+        <div class="row">
+        <div class="col-4">
+        <h5><%= news["title"] %></h5>
+        </div>
+        <div class="col-6">
+        <p> <%= news["description"] %></p>
+        </div>
+        <div class="col-1">
+        <a href= "<%= news["url"] %>"  class="btn btn-primary">Source link</a>
+        </div>
+        <% end %>
+    </p>
 
-  <nav class="navbar navbar-light bg-light static-top">
-    <div class="container">
-      <a class="navbar-brand" href="#">Your Info</a>
+<hr class="my-4">
+
+  <div class="row mt-1">
+        <div class="col-sm-4 text-center">
+          <h3>Where is <%=@location %> located?</h3>
+      <iframe
+        width="350"
+        height="350"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtovsQvkIUWlNqtYwXY87gEd4ZSmJEhMw
+          &q=<%= @lat_lng %>&zoom=8" allowfullscreen>
+      </iframe>
+        </div>
+        <div class="col-sm-4 text-center">
+        <h3>The weather in <%=@location %></h3>
+        <hr class="my-5">
+        <h5> It's currently <%=@current_temperature%> degrees farenheit and the current condition is <%=@current_conditions%>.</h5>
+        </i>    
       </div>
-  </nav>
+    <div class="col-sm-4 text-center">
+        <h3> Next week's forecast </h3>
+        <% for day in @weekly_summary %>
+        <div class="container mt-5">
+        <%=[summary]%>
+        </div>
+        <% end %>  
 
-#   <header class="masthead text-gray text-center">
-#     <div class="overlay"></div>
-#     <div class="container">
-#       <div class="row">
-#         <div class="col-xl-9 mx-auto">
-#           <h1 class="mb-5">Want an updated report of your local news and weather forecast?</h1>
-#         </div>
-#         <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-#         <form action="/news">
-#             <input type="text" name="location">
-#             <button type="submit" class="btn btn-primary">Let's go!</submit>
-#         </form>
-#         </div>
-#       </div>
-#     </div>
-#   </header>
+      
+    </div>
 
-  
+
+    # Max temperature on  will be <%= day["apparentTemperatureHigh"] %> degrees and the conditions will be <%= day["summary"] %>
     
 
+    
+
+    
+
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+  </div>
+  </div>
+    </body>
 </html>
